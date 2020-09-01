@@ -1,1 +1,2 @@
 # ProxyCam
+The main objective of this project is to develop a face recognition based automated attendance system. In order to achieve better performance, the test images and training images of this proposed approach are limited to frontal and upright facial images that consist of a single face only. The test images and training images have to be captured by using the same device to ensure no quality difference. In addition, the person has to register in the database to be recognized. The enrolment can be done on the spot through the user-friendly interface.
