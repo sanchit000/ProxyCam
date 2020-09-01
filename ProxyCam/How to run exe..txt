@@ -1,0 +1,4 @@
+For execution 
+1.You have to install opencv package in your computer.
+search on google, if error happen, search on google with error statement.
+2.There is no error in code if you are facing problem in it then surely it will be fault of library only.
