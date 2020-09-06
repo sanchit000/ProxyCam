@@ -2,7 +2,6 @@
 """
 ProxyCam Project
 
-@author: ABHISHEK RANJAN
 """
 
 import tkinter as tk
@@ -251,11 +250,6 @@ trackImg = tk.Button(window, text="Track Images", command=TrackImages  ,fg="red"
 trackImg.place(x=800, y=500)
 quitWindow = tk.Button(window, text="Quit", command=window.destroy  ,fg="red"  ,bg="yellow"  ,width=20  ,height=3, activebackground = "Red" ,font=('times', 15, ' bold '))
 quitWindow.place(x=1100, y=500)
-copyWrite = tk.Text(window, background=window.cget("background"), borderwidth=0,font=('times', 30, 'italic bold underline'))
-copyWrite.tag_configure("superscript", offset=10)
-copyWrite.insert("insert", "Developed by Abhishek Ranjan","", "TEAM", "superscript")
-copyWrite.configure(state="disabled",fg="red"  )
-copyWrite.pack(side="left")
-copyWrite.place(x=800, y=750)
+
 
 window.mainloop()
