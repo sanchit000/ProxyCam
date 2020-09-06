@@ -1,17 +1,14 @@
-# -*- coding: utf-8 -*-
-"""
-ProxyCam Project
 
-"""
 
-import tkinter as tk
-from tkinter import Message ,Text
-import cv2,os
-import shutil
+import tkinter as tk       #import Tkinter
+from tkinter import *
+
+import cv2,os           #import opencv and os which is used for interacting with OS
+import shutil           #provide fuction of copy files as well as folders
 import csv
-import numpy as np
-from PIL import Image, ImageTk
-import pandas as pd
+import numpy as np     #providing support of multi dimensional array and matrices
+from PIL import Image, ImageTk    #provide malupulating image functions
+import pandas as pd               #provide data manipulation and analysis
 import datetime
 import time
 import tkinter.ttk as ttk
@@ -19,74 +16,58 @@ import tkinter.font as font
 
 
 window = tk.Tk()
-#helv36 = tk.Font(family='Helvetica', size=36, weight='bold')
-window.title("ProxyCam_Face_Recogniser")
-
-dialog_title = 'QUIT'
-dialog_text = 'Are you sure?'
-#answer = messagebox.askquestion(dialog_title, dialog_text)
-
-#window.geometry('1280x720')
-window.configure(background='blue')
-
-#window.attributes('-fullscreen', True)
-
-window.grid_rowconfigure(0, weight=1)
-window.grid_columnconfigure(0, weight=1)
-
-#path = "profile.jpg"
-
-#Creates a Tkinter-compatible photo image, which can be used everywhere Tkinter expects an image object.
-#img = ImageTk.PhotoImage(Image.open(path))
-
-#The Label widget is a standard Tkinter widget used to display a text or image on the screen.
-#panel = tk.Label(window, image = img)
 
 
-#panel.pack(side = "left", fill = "y", expand = "no")
-
-#cv_img = cv2.imread("img541.jpg")
-#x, y, no_channels = cv_img.shape
-#canvas = tk.Canvas(window, width = x, height =y)
-#canvas.pack(side="left")
-#photo = PIL.ImageTk.PhotoImage(image = PIL.Image.fromarray(cv_img))
-# Add a PhotoImage to the Canvas
-#canvas.create_image(0, 0, image=photo, anchor=tk.NW)
-
-#msg = Message(window, text='Hello, world!')
-
-# Font is a tuple of (font_family, size_in_points, style_modifier_string)
+window.title("ProxyCam: Smart-Attendance-System")       #title of window
 
 
 
-message = tk.Label(window, text="ProxyCam Face-Recognition-Based-Attendance-System" ,bg="Green"  ,fg="white"  ,width=50  ,height=3,font=('times', 30, 'italic bold underline'))
+window.geometry('1280x720')                        #Geometry of window
+window.configure(background='#00b3b3')             #window background color
 
-message.place(x=200, y=20)
 
-lbl = tk.Label(window, text="Enter ID",width=20  ,height=2  ,fg="red"  ,bg="yellow" ,font=('times', 15, ' bold ') )
-lbl.place(x=400, y=200)
 
-txt = tk.Entry(window,width=20  ,bg="yellow" ,fg="red",font=('times', 15, ' bold '))
-txt.place(x=700, y=215)
 
-lbl2 = tk.Label(window, text="Enter Name",width=20  ,fg="red"  ,bg="yellow"    ,height=2 ,font=('times', 15, ' bold '))
-lbl2.place(x=400, y=300)
 
-txt2 = tk.Entry(window,width=20  ,bg="yellow"  ,fg="red",font=('times', 15, ' bold ')  )
-txt2.place(x=700, y=315)
+
+
+message = tk.Label(window, text="ProxyCam: Smart-Attendance-System" ,bg="black"  ,fg="white"  ,width=50  ,height=2,font=('times', 30, 'italic bold underline'))
+
+message.place(x=50, y=20)
+
+lbl = tk.Label(window, text="Enter ID",width=15  ,height=2  ,fg="white"  ,bg="black" ,font=('times', 15, ' bold ') )
+lbl.place(x=50, y=250)
+
+txt = tk.Entry(window,width=15  ,fg="black" ,bg="white",font=('times', 30,))
+txt.place(x=350, y=250)
+
+lbl2 = tk.Label(window, text="Enter Name",width=15  ,fg="white"  ,bg="black"    ,height=2 ,font=('times', 15, ' bold '))
+lbl2.place(x=50, y=325)
+
+txt2 = tk.Entry(window,width=15  ,fg="black"  ,bg="white",font=('times', 30, ' bold ')  )
+txt2.place(x=350, y=325)
 
 lbl3 = tk.Label(window, text="Notification : ",width=20  ,fg="red"  ,bg="yellow"  ,height=2 ,font=('times', 15, ' bold underline '))
-lbl3.place(x=400, y=400)
+lbl3.place(x=100, y=150)
 
-message = tk.Label(window, text="" ,bg="yellow"  ,fg="red"  ,width=30  ,height=2, activebackground = "yellow" ,font=('times', 15, ' bold '))
-message.place(x=700, y=400)
+message = tk.Label(window, text="" ,bg="yellow"  ,fg="red"  ,width=60  ,height=2, activebackground = "yellow" ,font=('times', 15, ' bold '))
+message.place(x=400, y=150)
 
-lbl3 = tk.Label(window, text="Attendance : ",width=20  ,fg="red"  ,bg="yellow"  ,height=2 ,font=('times', 15, ' bold  underline'))
-lbl3.place(x=400, y=650)
+#message = tk.Label(window, text="" ,bg="black"  ,fg="white"  ,width=30  ,height=2, activebackground = "yellow" ,font=('times', 15, ' bold '))
+#message.place(x=700, y=400)
+
+#lbl3 = tk.Label(window, text="Attendance : ",width=20  ,fg="white"  ,bg="black"  ,height=2 ,font=('times', 15, ' bold  underline'))
+#lbl3.place(x=400, y=650)
+message2 = tk.Label(window, text="" ,fg="red"   ,bg="yellow",activeforeground = "green",width=90  ,height=2  ,font=('times', 15, ' bold '))
+message2.place(x=75, y=650)
 
 
-message2 = tk.Label(window, text="" ,fg="red"   ,bg="yellow",activeforeground = "green",width=30  ,height=2  ,font=('times', 15, ' bold '))
-message2.place(x=700, y=650)
+
+#message2 = tk.Label(window, text="" ,fg="white"   ,bg="black",activeforeground = "green",width=30  ,height=2  ,font=('times', 15, ' bold '))
+#message2.place(x=700, y=650)
+
+#photo=tk.PhotoImage(file="pass.png")
+#can.create_image(0,0,image=photo,anchor=NW)
 
 def clear():
     txt.delete(0, 'end')
@@ -113,21 +94,23 @@ def is_number(s):
         pass
 
     return False
+
+
 #function for take image
 def TakeImages():
     Id=(txt.get())
     name=(txt2.get())
     if(is_number(Id) and name.isalpha()):
-        cam = cv2.VideoCapture(0)
+        cam = cv2.VideoCapture(0)            #videon is start
         harcascadePath = "haarcascade_frontalface_default.xml"
-        detector=cv2.CascadeClassifier(harcascadePath)
+        detector=cv2.CascadeClassifier(harcascadePath)      #detect face and eyes in an image
         sampleNum=0
         while(True):
-            ret, img = cam.read()
-            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+            ret, img = cam.read()                                    #capture the frame
+            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)            #convert BGR to gray color
             faces = detector.detectMultiScale(gray, 1.3, 5)
             for (x,y,w,h) in faces:
-                cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+                cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)      #create a rectangle about the face portion
                 #incrementing sample number
                 sampleNum=sampleNum+1
                 #saving the captured face in the dataset folder TrainingImage
@@ -156,12 +139,16 @@ def TakeImages():
         if(name.isalpha()):
             res = "Enter Numeric Id"
             message.configure(text= res)
+
+
 #function for train images.
 def TrainImages():
-    recognizer = cv2.face_LBPHFaceRecognizer.create()#recognizer = cv2.face.LBPHFaceRecognizer_create()#$cv2.createLBPHFaceRecognizer()
+
+    recognizer = cv2.face.LBPHFaceRecognizer_create()      #Face recognizer to train the dataset
+
     harcascadePath = "haarcascade_frontalface_default.xml"
     detector =cv2.CascadeClassifier(harcascadePath)
-    faces,Id = getImagesAndLabels("TrainingImage")
+    faces,Id = getImagesAndLabels("TrainingImage")            #taking image one by one and returning fac and if of each image
     recognizer.train(faces, np.array(Id))
     recognizer.save("TrainingImageLabel\Trainner.yml")
     res = "Image Trained"#+",".join(str(f) for f in Id)
@@ -172,7 +159,7 @@ def getImagesAndLabels(path):
     imagePaths=[os.path.join(path,f) for f in os.listdir(path)]
     #print(imagePaths)
 
-    #create empth face list
+    #create empty face list
     faces=[]
     #create empty ID list
     Ids=[]
@@ -204,7 +191,7 @@ def TrackImages():
         gray=cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
         faces=faceCascade.detectMultiScale(gray, 1.2,5)
         for(x,y,w,h) in faces:
-            cv2.rectangle(im,(x,y),(x+w,y+h),(225,0,0),2)
+            cv2.rectangle(im,(x,y),(x+w,y+h),(0,255,0),2)
             Id, conf = recognizer.predict(gray[y:y+h,x:x+w])
             if(conf < 50):
                 ts = time.time()
@@ -237,19 +224,21 @@ def TrackImages():
     res=attendance
     message2.configure(text= res)
 
-
-clearButton = tk.Button(window, text="Clear", command=clear  ,fg="red"  ,bg="yellow"  ,width=20  ,height=2 ,activebackground = "Red" ,font=('times', 15, ' bold '))
-clearButton.place(x=950, y=200)
-clearButton2 = tk.Button(window, text="Clear", command=clear2  ,fg="red"  ,bg="yellow"  ,width=20  ,height=2, activebackground = "Red" ,font=('times', 15, ' bold '))
-clearButton2.place(x=950, y=300)
-takeImg = tk.Button(window, text="Take Images", command=TakeImages  ,fg="red"  ,bg="yellow"  ,width=20  ,height=3, activebackground = "Red" ,font=('times', 15, ' bold '))
-takeImg.place(x=200, y=500)
-trainImg = tk.Button(window, text="Train Images", command=TrainImages  ,fg="red"  ,bg="yellow"  ,width=20  ,height=3, activebackground = "Red" ,font=('times', 15, ' bold '))
-trainImg.place(x=500, y=500)
-trackImg = tk.Button(window, text="Track Images", command=TrackImages  ,fg="red"  ,bg="yellow"  ,width=20  ,height=3, activebackground = "Red" ,font=('times', 15, ' bold '))
-trackImg.place(x=800, y=500)
-quitWindow = tk.Button(window, text="Quit", command=window.destroy  ,fg="red"  ,bg="yellow"  ,width=20  ,height=3, activebackground = "Red" ,font=('times', 15, ' bold '))
-quitWindow.place(x=1100, y=500)
+cl_btn=PhotoImage(file='button_clear.png')
+clearButton = tk.Button(window,image=cl_btn, command=clear,bg="#addbeb", width=100, height=40,borderwidth=0)
+clearButton.place(x=700, y=255)
+clearButton2 = tk.Button(window,image=cl_btn, command=clear2,bg="#addbeb", width=100, height=40,borderwidth=0)
+clearButton2.place(x=700, y=330)
+takeImg = tk.Button(window, text="Take Images", command=TakeImages  ,fg="white"  ,bg="blue"  ,width=15  ,height=2, activebackground = "#00b3b3" ,font=('times', 15, ' bold '))
+takeImg.place(x=50, y=450)
+trainImg = tk.Button(window, text="Train Images", command=TrainImages  ,fg="white"  ,bg="blue"  ,width=15  ,height=2, activebackground = "#00b3b3" ,font=('times', 15, ' bold '))
+trainImg.place(x=350, y=450)
+trackImg = tk.Button(window, text="Take Attendance", command=TrackImages  ,fg="white"  ,bg="red"  ,width=15  ,height=2, activebackground = "#00b3b3" ,font=('times', 15, ' bold '))
+trackImg.place(x=50, y=550)
+quitWindow = tk.Button(window, text="Quit", command=window.destroy  ,fg="white"  ,bg="blue"  ,width=15  ,height=2, activebackground = "#00b3b3" ,font=('times', 15, ' bold '))
+quitWindow.place(x=350, y=550)
 
 
 window.mainloop()
+
+
